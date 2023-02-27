@@ -32,6 +32,10 @@ jobs:
           node-version: 16
           registry-url: https://npm.pkg.github.com/
       - run: npm install
-      - run: npm run deploy
+      - run: |
+            git config --global user.email "dashkootek@gmail.com"
+            git config --global user.name "ARadmanesh"
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ARadmanesh/react-gh.git
+            npm run deploy
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
